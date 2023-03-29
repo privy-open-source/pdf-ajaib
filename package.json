@@ -2,6 +2,7 @@
   "name": "@privyid/pdf-ajaib",
   "version": "0.1.0",
   "private": false,
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build && vue-tsc --emitDeclarationOnly",
