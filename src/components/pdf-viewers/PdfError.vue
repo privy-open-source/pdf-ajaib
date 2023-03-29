@@ -1,6 +1,6 @@
 <script lang="ts">
 import type * as PDFJS from 'pdfjs-dist'
-import { pAspectRatio } from '../aspect-ratio'
+import { pAspectRatio } from '@/directives/aspect-ratio'
 import type { PropType } from 'vue-demi';
 import { defineComponent } from 'vue-demi'
 

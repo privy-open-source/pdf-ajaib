@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PropType} from 'vue-demi';
 import { computed, defineComponent, onMounted, provide, toRef, watch } from 'vue-demi'
-import { pAspectRatio } from '../aspect-ratio'
+import { pAspectRatio } from '@/directives/aspect-ratio'
 import { templateRef, useToNumber, useVModel, watchDebounced, syncRef } from '@vueuse/core'
 import type { LayoutVariant} from './main';
 import { PDF_VIEWER_CONTEXT } from './main'
