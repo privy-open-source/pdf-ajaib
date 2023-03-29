@@ -1,52 +1,33 @@
-# pdf-ajaib
+# PDF-Ajaib
 
-This template should help get you started developing with Vue 3 in Vite.
+PDF-Ajaib is a Vue 3 library with a PDF viewer component and a powerful place holder feature for precise object placement on PDF documents in Vue applications. This feature is useful for placing digital signatures and other objects accurately on PDFs. The viewer component uses PDF.js for rendering PDF documents and allows customization of page navigation, zooming, and text selection. PDF-Ajaib can also read password-protected PDFs. Overall, it's an excellent choice for Vue developers who need to display PDF documents with precise object placement.
 
-## Recommended IDE Setup
+## Install via NPM/Yarn
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
 
 ```sh
-npm install
+yarn add @privyid/pdf-ajaib
 ```
 
-### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+npm install @privyid/pdf-ajaib
 ```
 
-### Type-Check, Compile and Minify for Production
 
-```sh
-npm run build
+# Usage
+To use PDF-Ajaib in your Vue application, first, import it into your component:
+
+```javascript
+Copy code
+import { PdfViewer } from '@privyid/pdf-ajaib'
+
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+Then, use the PdfViewer component in your template:
 
-```sh
-npm run test:unit
+```html
+<PdfViewer src="path/to/your/pdf" />
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+For more information on using PDF-Ajaib, please see the [Persona Design System documentation](https://privy-open-source.github.io/design-system/components/pdf-viewer/).
