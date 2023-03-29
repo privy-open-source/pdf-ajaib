@@ -1,7 +1,7 @@
 {
   "name": "@privyid/pdf-ajaib",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "vite",
     "build": "vite build && vue-tsc --emitDeclarationOnly",
@@ -15,7 +15,8 @@
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "release": "yarn lint && yarn build && changelogen --release && npm publish && git push --follow-tags"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.2.5",
@@ -54,6 +55,7 @@
     "@vue/test-utils": "^2.3.0",
     "@vue/tsconfig": "^0.1.3",
     "babel-loader": "^8.3.0",
+    "changelogen": "^0.5.2",
     "eslint": "^8.34.0",
     "eslint-plugin-vue": "^9.9.0",
     "histoire": "^0.15.9",
