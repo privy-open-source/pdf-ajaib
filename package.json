@@ -1,6 +1,6 @@
 {
   "name": "@privyid/pdf-ajaib",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "license": "MIT",
   "scripts": {
@@ -16,7 +16,6 @@
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview",
-    "postinstall": "husky install",
     "release": "yarn lint && yarn build && changelogen --release && npm publish && git push --follow-tags"
   },
   "dependencies": {
