@@ -16,6 +16,7 @@
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview",
+    "prepublish": "yarn build",
     "release": "yarn lint && yarn build && changelogen --release && npm publish && git push --follow-tags"
   },
   "dependencies": {
