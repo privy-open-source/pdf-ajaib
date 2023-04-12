@@ -309,11 +309,17 @@ export default defineComponent({
     pointer-events: none;
     touch-action: none;
 
+    &,
+    & > * {
+      touch-action: none;
+      pointer-events: none;
+    }
+
     button,
     input,
     textarea,
     a {
-      pointer-events: none;
+      pointer-events: auto;
     }
 
     * {
