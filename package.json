@@ -8,7 +8,7 @@
     "url": "https://github.com/privy-open-source/pdf-ajaib.git"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --config=./demo/vite.config.ts",
     "build": "vite build && vue-tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "test:unit": "vitest",
