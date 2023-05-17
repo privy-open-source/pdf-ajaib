@@ -91,7 +91,6 @@ export default defineComponent({
     left: 0px;
     right: 0px;
     bottom: 2.5rem;
-    z-index: 10;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -113,10 +112,6 @@ export default defineComponent({
         border-style: none;
         color: rgb(182, 184, 185);
         cursor: pointer;
-
-        &:hover {
-
-        }
       }
 
       .pdf-zoom-out {

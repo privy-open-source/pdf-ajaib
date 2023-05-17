@@ -1,9 +1,9 @@
 <script lang="ts">
-import type { PropType} from 'vue-demi';
+import type { PropType } from 'vue-demi'
 import { computed, defineComponent, onMounted, provide, toRef, watch } from 'vue-demi'
 import { pAspectRatio } from '@/directives/aspect-ratio'
 import { templateRef, useToNumber, useVModel, watchDebounced, syncRef } from '@vueuse/core'
-import type { LayoutVariant} from './main';
+import type { LayoutVariant } from './main'
 import { PDF_VIEWER_CONTEXT } from './main'
 import { useSticky } from './utils/use-sticky'
 import PdfNavigation from './PdfNavigation.vue'
@@ -133,6 +133,22 @@ export default defineComponent({
     syncRef(pdfPage, vPage)
     syncRef(pdfScale, vScale)
 
+    function pdfZoomIn() {
+      pdfScale.value = Math.round(pdfScale.value / 0.1) * 0.1 + 0.1
+    }
+
+    function pdfZoomOut() {
+      pdfScale.value = Math.round(pdfScale.value / 0.1) * 0.1 - 0.1
+    }
+
+    function pdfNextPage() {
+      pdfPage.value++
+    }
+
+    function pdfPrevPage() {
+      pdfPage.value--
+    }
+
     return {
       pdfPage,
       pdfScale,
@@ -144,7 +160,11 @@ export default defineComponent({
       pdfJS,
       idle,
       loading,
-      error
+      error,
+      pdfZoomIn,
+      pdfZoomOut,
+      pdfNextPage,
+      pdfPrevPage
     }
   }
 })
@@ -181,7 +201,22 @@ export default defineComponent({
       />
 
       <transition name="slide-up">
-        <pdf-navigation v-show="!idle" />
+        <div class="pdf__navigation">
+          <slot
+            name="navigation"
+            :idle="idle"
+            :page="pdfPage"
+            :scale="scale"
+            :totalPage="totalPage"
+            :zoom-in="pdfZoomIn"
+            :zoom-out="pdfZoomOut"
+            :next="pdfNextPage"
+            :prev="pdfPrevPage"
+            :doc="pdfDoc"
+          >
+            <pdf-navigation v-show="!idle" />
+          </slot>
+        </div>
       </transition>
 
       <slot name="body" :page="pdfPage" :scale="pdfScale" :total-page="totalPage" :doc="pdfDoc" />
@@ -239,6 +274,10 @@ export default defineComponent({
   &__footer {
     z-index: 1;
     background-color: white;
+  }
+
+  &__navigation {
+    z-index: 10;
   }
 }
 </style>
