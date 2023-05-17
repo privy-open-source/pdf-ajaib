@@ -31,6 +31,16 @@ const object = reactive<IPdfObject>({
           src="https://via.placeholder.com/430x230/23B242/ffffff"
         />
       </pdf-object>
+
+      <!-- <template #navigation="{ zoomIn, zoomOut, page, totalPage, next, prev }">
+        <button @click="zoomOut">Zoom Out</button>
+        <button @click="zoomIn">Zoom In</button>
+        <div>
+          Page <span>{{ page }}</span> / {{ totalPage }}
+        </div>
+        <button @click="prev">Prev</button>
+        <button @click="next">Next</button>
+      </template> -->
     </pdf-viewer>
   </div>
 </template>
