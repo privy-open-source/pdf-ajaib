@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import PdfViewer from '@/components/pdf-viewers/PdfViewer.vue'
 import PdfObject from '@/components/pdf-object/PdfObject.vue'
-import type { PdfObject as IPdfObject } from '@/types/ref'
+import type { PdfObject as IPdfObject, PdfViewerContext } from '@/types/ref'
 
 const object = reactive<IPdfObject>({
   page: undefined,
@@ -11,11 +11,15 @@ const object = reactive<IPdfObject>({
   width: undefined,
   height: undefined
 })
+
+const pdf = ref<PdfViewerContext>()
 </script>
 
 <template>
   <div class="pdf-example">
+    {{ pdf  }}
     <pdf-viewer
+      ref="pdf"
       src="https://privy-open-source.github.io/design-system/assets/Calibrator-v3.e869f66c.pdf"
     >
       <pdf-object
@@ -32,12 +36,13 @@ const object = reactive<IPdfObject>({
         />
       </pdf-object>
 
-      <!-- <template #navigation="{ zoomIn, zoomOut, page, totalPage, next, prev }">
+      <!-- <template #navigation="{ zoomIn, zoomOut, page, totalPage, next, prev, scale }">
         <button @click="zoomOut">Zoom Out</button>
         <button @click="zoomIn">Zoom In</button>
         <div>
           Page <span>{{ page }}</span> / {{ totalPage }}
         </div>
+        <div>Scale {{ scale }}</div>
         <button @click="prev">Prev</button>
         <button @click="next">Next</button>
       </template> -->

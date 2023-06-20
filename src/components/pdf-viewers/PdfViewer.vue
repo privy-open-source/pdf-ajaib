@@ -2,7 +2,7 @@
 import type { PropType } from 'vue-demi'
 import { computed, defineComponent, onMounted, provide, toRef, watch } from 'vue-demi'
 import { pAspectRatio } from '@/directives/aspect-ratio'
-import { templateRef, useToNumber, useVModel, watchDebounced, syncRef } from '@vueuse/core'
+import { templateRef, useToNumber, useVModel, watchDebounced, syncRef, useToggle } from '@vueuse/core'
 import type { LayoutVariant } from './main'
 import { PDF_VIEWER_CONTEXT } from './main'
 import { useSticky } from './utils/use-sticky'
@@ -49,10 +49,14 @@ export default defineComponent({
     offsetTop: {
       type: [Number, String],
       default: 0
+    },
+    noNavigation: {
+      type: Boolean,
+      default: false,
     }
   },
   emits: ['ready', 'loaded', 'error', 'error-password', 'update:page', 'update:scale'],
-  setup(props, { emit }) {
+  setup(props, { emit, expose }) {
     const root = templateRef<HTMLDivElement>('root')
     const container = templateRef<HTMLDivElement>('container')
     const viewer = templateRef<HTMLDivElement>('viewer')
@@ -60,6 +64,8 @@ export default defineComponent({
 
     const vPage = useVModel(props, 'page')
     const vScale = useVModel(props, 'scale')
+    const [isReady, toggleReady] = useToggle()
+    const [isLoaded, toggleLoaded] = useToggle()
 
     const offsetTop = useToNumber(toRef(props, 'offsetTop'), {
       nanToZero: true
@@ -112,6 +118,7 @@ export default defineComponent({
     })
 
     onLoaded((doc) => {
+      toggleLoaded(true)
       emit('loaded', doc)
     })
 
@@ -121,6 +128,7 @@ export default defineComponent({
     })
 
     onReady((pdfViewer) => {
+      toggleReady(true)
       emit('ready', pdfViewer)
     })
 
@@ -149,7 +157,25 @@ export default defineComponent({
       pdfPage.value--
     }
 
+    const calculatedScale = computed<number>(() => {
+      return Number((pdfScale.value * 100).toFixed(0))
+    })
+
+    expose({
+      idle,
+      page: pdfPage,
+      scale: calculatedScale,
+      totalPage,
+      zoomIn: pdfZoomIn,
+      zoomOut: pdfZoomOut,
+      next: pdfNextPage,
+      prev: pdfPrevPage,
+      isReady,
+      isLoaded,
+    })
+
     return {
+      calculatedScale,
       pdfPage,
       pdfScale,
       classNames,
@@ -164,7 +190,7 @@ export default defineComponent({
       pdfZoomIn,
       pdfZoomOut,
       pdfNextPage,
-      pdfPrevPage
+      pdfPrevPage,
     }
   }
 })
@@ -201,12 +227,12 @@ export default defineComponent({
       />
 
       <transition name="slide-up">
-        <div class="pdf__navigation">
+        <div v-if="!noNavigation" class="pdf__navigation">
           <slot
             name="navigation"
             :idle="idle"
             :page="pdfPage"
-            :scale="scale"
+            :scale="calculatedScale"
             :totalPage="totalPage"
             :zoom-in="pdfZoomIn"
             :zoom-out="pdfZoomOut"
