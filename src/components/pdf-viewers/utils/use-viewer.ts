@@ -34,7 +34,7 @@ export function useViewer(container: Ref<HTMLDivElement>, viewer: Ref<HTMLDivEle
       pdfJS.value = await import('pdfjs-dist')
 
       if (typeof window !== 'undefined' && 'Worker' in window)
-        pdfJS.value.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfJS.value.version}/build/pdf.worker.min.js`
+        pdfJS.value.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfJS.value.version}/build/pdf.worker.min.js`
 
       // Close previous document
       await closeDoc()
@@ -44,7 +44,7 @@ export function useViewer(container: Ref<HTMLDivElement>, viewer: Ref<HTMLDivEle
         pdfLoadingTask.value = pdfJS.value.getDocument({
           url: url,
           password: password,
-          cMapUrl: `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfJS.value.version}/cmaps/`,
+          cMapUrl: `https://unpkg.com/pdfjs-dist@${pdfJS.value.version}/cmaps/`,
           cMapPacked: true,
           disableStream: false
         })
