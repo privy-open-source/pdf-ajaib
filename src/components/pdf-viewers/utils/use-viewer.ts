@@ -26,15 +26,18 @@ export function useViewer(container: Ref<HTMLDivElement>, viewer: Ref<HTMLDivEle
   const errorEvent = createEventHook<Error>()
   const readyEvent = createEventHook<PDFViewer>()
 
-  async function openDoc(url: string, password?: string) {
+  async function openDoc(url: string, password?: string, workerSrc?: string) {
     loading.value = true
     error.value = undefined
-
     try {
       pdfJS.value = await import('pdfjs-dist')
 
       if (typeof window !== 'undefined' && 'Worker' in window)
-        pdfJS.value.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfJS.value.version}/build/pdf.worker.min.js`
+        if (workerSrc) {
+          pdfJS.value.GlobalWorkerOptions.workerSrc = workerSrc
+        } else {
+          pdfJS.value.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfJS.value.version}/build/pdf.worker.min.js`
+        }
 
       // Close previous document
       await closeDoc()

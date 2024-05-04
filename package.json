@@ -1,11 +1,11 @@
 {
-  "name": "@privyid/pdf-ajaib",
-  "version": "0.1.9",
+  "name": "pdf-ajaib-minor",
+  "version": "0.1.12",
   "private": false,
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/privy-open-source/pdf-ajaib.git"
+    "url": "https://github.com/losblancos113/pdf-ajaib"
   },
   "scripts": {
     "dev": "vite --config=./demo/vite.config.ts",
