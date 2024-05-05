@@ -53,6 +53,9 @@ export default defineComponent({
     noNavigation: {
       type: Boolean,
       default: false,
+    },
+    workerSrc: {
+      type: String,
     }
   },
   emits: ['ready', 'loaded', 'error', 'error-password', 'update:page', 'update:scale'],
@@ -97,9 +100,9 @@ export default defineComponent({
 
     watchDebounced(
       () => [props.src, props.password],
-      ([src, password]) => {
+      ([src, password, workerSrc]) => {
         if (src) {
-          openDoc(src, password)
+          openDoc(src, password, workerSrc)
         }
       },
       { debounce: 500 }
@@ -114,7 +117,7 @@ export default defineComponent({
     )
 
     onMounted(async () => {
-      if (props.src) openDoc(props.src, props.password)
+      if (props.src) openDoc(props.src, props.password, props.workerSrc)
     })
 
     onLoaded((doc) => {
