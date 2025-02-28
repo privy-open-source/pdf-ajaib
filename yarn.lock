@@ -671,9 +671,9 @@
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
 "@iconify-json/carbon@^1.1.16":
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/@iconify-json/carbon/-/carbon-1.1.16.tgz#6744e9f261a34fefc37bb8330e83e5e1b5352be4"
-  integrity sha512-AD8bcnRSGA0WfcGEass2FbA0sagrUzrpFx5WchuDy3uf7yKBWumdypdQK121DH321fQDl5+zZQ26T6gC9knwUQ==
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@iconify-json/carbon/-/carbon-1.2.8.tgz#fe81b9729f0115448e25d737895d938b23326531"
+  integrity sha512-6xh4YiFBz6qoSnB3XMe23WvjTJroDFXB17J1MbiT7nATFe+70+em1acRXr8hgP/gYpwFMHFc4IvjA/IPTPnTzg==
   dependencies:
     "@iconify/types" "*"
 
