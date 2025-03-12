@@ -114,19 +114,10 @@ export default defineComponent({
         cursor: pointer;
       }
 
-      .pdf-zoom-out {
-        margin-top: 6px;
-      }
-      .pdf-zoom-in {
-        margin-top: 6px;
-      }
-
       .pdf-prev {
-        margin-top: 6px;
         margin-left: 5px;
       }
       .pdf-next {
-        margin-top: 6px;
         margin-left: 10px;
       }
 
