@@ -93,9 +93,11 @@ export function useViewer(container: Ref<HTMLDivElement>, viewer: Ref<HTMLDivEle
 
   async function initPdfViewer() {
     if (typeof navigator !== 'undefined' && container.value && viewer.value) {
-      const { NullL10n, PDFLinkService, PDFViewer, EventBus } = await import(
+      const viewerLib = await import(
         'pdfjs-dist/web/pdf_viewer'
       )
+
+      const {NullL10n, PDFLinkService, PDFViewer, EventBus } = viewerLib.default
 
       const bus = new EventBus()
 

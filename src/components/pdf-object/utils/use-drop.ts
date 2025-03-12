@@ -21,7 +21,7 @@ export default function useDrop(target: Ref<HTMLElement>, dropTarget: Ref<string
     destroy()
 
     if (target.value) {
-      const { default: Interact } = await import('interactjs')
+      const Interact = (await import('interactjs')).default
 
       // Interact.dynamicDrop(true)
 
