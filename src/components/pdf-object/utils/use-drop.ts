@@ -23,7 +23,7 @@ export default function useDrop(target: Ref<HTMLElement>, dropTarget: Ref<string
     if (target.value) {
       const Interact = (await import('interactjs')).default
 
-      // Interact.dynamicDrop(true)
+      Interact.dynamicDrop(true)
 
       instance.value = Interact(dropTarget.value, { context: target.value }).dropzone({
         accept: '.pdf-object',
