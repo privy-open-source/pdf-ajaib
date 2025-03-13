@@ -1,16 +1,16 @@
 <script lang="ts">
+import { pAspectRatio } from '@/directives/aspect-ratio'
+import { syncRef, templateRef, useToggle, useToNumber, useVModel, watchDebounced } from '@vueuse/core'
 import type { PropType } from 'vue-demi'
 import { computed, defineComponent, onMounted, provide, toRef, watch } from 'vue-demi'
-import { pAspectRatio } from '@/directives/aspect-ratio'
-import { templateRef, useToNumber, useVModel, watchDebounced, syncRef, useToggle } from '@vueuse/core'
+import PdfObjects from '../pdf-object/PdfObjects.vue'
 import type { LayoutVariant } from './main'
 import { PDF_VIEWER_CONTEXT } from './main'
-import { useSticky } from './utils/use-sticky'
-import PdfNavigation from './PdfNavigation.vue'
-import PdfLoading from './PdfLoading.vue'
 import PdfError from './PdfError.vue'
+import PdfLoading from './PdfLoading.vue'
+import PdfNavigation from './PdfNavigation.vue'
 import { useIdle } from './utils/use-idle'
-import PdfObjects from '../pdf-object/PdfObjects.vue'
+import { useSticky } from './utils/use-sticky'
 import { useViewer } from './utils/use-viewer'
 
 export default defineComponent({
@@ -100,9 +100,9 @@ export default defineComponent({
 
     watchDebounced(
       () => [props.src, props.password],
-      ([src, password, workerSrc]) => {
+      ([src, password]) => {
         if (src) {
-          openDoc(src, password, workerSrc)
+          openDoc(src, password, props.workerSrc)
         }
       },
       { debounce: 500 }
