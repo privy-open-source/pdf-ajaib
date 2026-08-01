@@ -694,10 +694,15 @@
     kolorist "^1.7.0"
     local-pkg "^0.4.3"
 
-"@interactjs/types@1.10.17", "@interactjs/types@^1.10.17":
+"@interactjs/types@1.10.17":
   version "1.10.17"
   resolved "https://registry.yarnpkg.com/@interactjs/types/-/types-1.10.17.tgz#1649de06d9ead790c81ecece76736b852bdfc77e"
   integrity sha512-X2JpoM7xUw0p9Me0tMaI0HNfcF/Hd07ZZlzpnpEMpGerUZOLoyeThrV9P+CrBHxZrluWJrigJbcdqXliFd0YMA==
+
+"@interactjs/types@^1.10.17":
+  version "1.10.28"
+  resolved "https://registry.yarnpkg.com/@interactjs/types/-/types-1.10.28.tgz#c928ee3a23663136d696f0ca1d5c72e4dd61d5c7"
+  integrity sha512-vPmu4HWmsg0Fub3BPKGk7DuozkhgVK84TVkziY47v8Uh0A14gph55/vVRaQN4oZov0lGNJNK6Jyddim2qd/4vw==
 
 "@itsy/vite-css-inject@^1.0.2":
   version "1.0.2"
